@@ -11,7 +11,7 @@ const Ambassadors = () => {
       title: "Founding Ambassador",
       location: "Crowborough North phase 2",
       bio: "Passionate leader dedicated to empowering the next generation through innovation and community building. Committed to creating positive change and fostering growth.",
-      image: "/images/ambassador.jpg", // Your actual picture
+      image: "/images/ambassador.jpg", 
       achievements: ["FFGA Founding Member", "Community Leader", "Innovation Advocate"]
     },
     {
@@ -20,7 +20,7 @@ const Ambassadors = () => {
       title: "Innovation Ambassador",
       location: "Harare, Zimbabwe",
       bio: "AI researcher and community builder focused on bridging the gap between technology and social impact.",
-      image: "/images/mac.jpg", // Updated to use mac.jpg
+      image: "/images/mac.jpg", 
       achievements: ["Published 15 research papers", "Built 5 AI for good projects", "Organized 20+ workshops"]
     },
     {

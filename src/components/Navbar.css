@@ -24,8 +24,7 @@
   align-items: center;
   height: 85px;
   width: 100%;
-  overflow: visible;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 .nav-logo {
@@ -35,8 +34,7 @@
   align-items: center;
   gap: 0.75rem;
   flex-shrink: 0;
-  max-width: 300px;
-  min-width: 250px;
+  min-width: 280px;
 }
 
 .nav-logo:hover {
@@ -73,73 +71,91 @@
 
 .nav-menu {
   display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
   list-style: none;
   margin: 0;
   padding: 0;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: nowrap;
-  min-width: -1px;
   flex: 1;
-  justify-content: flex-end;
-  overflow: visible;
   margin-left: auto;
 }
 
 .nav-item {
+  white-space: nowrap;
   position: relative;
 }
 
 .nav-link {
-  text-decoration: none;
   color: var(--text-primary);
+  text-decoration: none;
   font-weight: 500;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  padding: 10px 15px;
+  font-size: 0.95rem;
+  padding: 10px 16px;
   border-radius: 8px;
+  transition: all 0.3s ease;
   position: relative;
-  white-space: nowrap;
   display: inline-block;
-  min-width: max-content;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
 }
 
 .nav-link:hover {
   color: var(--primary-color);
-  background: rgba(99, 102, 241, 0.1);
+  transform: translateY(-1px);
+  background: rgba(99, 102, 241, 0.08);
 }
 
 .nav-link.cta-button {
   background: var(--primary-color);
   color: white;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border-radius: 25px;
   font-weight: 600;
+  margin-left: 1rem;
+  font-size: 0.9rem;
 }
 
 .nav-link.cta-button:hover {
   background: var(--primary-dark);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
+  color: white;
 }
 
-.admin-button {
+.dashboard-link {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  padding: 8px 16px;
+  color: white !important;
+  padding: 10px 18px;
   border-radius: 20px;
   font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  margin-right: 0.5rem;
   font-size: 0.9rem;
 }
 
-.admin-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+.dashboard-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  color: white !important;
   background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+.admin-button {
+  background: var(--text-secondary);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  margin-left: 0.5rem;
+}
+
+.admin-button:hover {
+  background: var(--text-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
 }
 
 .hamburger {
@@ -173,15 +189,17 @@
   transform: rotate(45deg) translate(-5px, -6px);
 }
 
-/* Mobile Styles */
+
 @media (max-width: 768px) {
   .nav-container {
     padding: 0 15px;
     height: 70px;
+    gap: 1rem;
   }
 
   .nav-logo {
-    min-width: 250px;
+    min-width: 200px;
+    max-width: 200px;
   }
 
   .logo-img {
@@ -190,11 +208,11 @@
   }
 
   .logo-text h2 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 
   .logo-text span {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
 
   .hamburger {
@@ -213,32 +231,63 @@
     box-shadow: var(--shadow-lg);
     padding: 2rem 0;
     gap: 1rem;
+    z-index: 999;
   }
 
   .nav-menu.active {
     left: 0;
   }
 
-  .nav-link {
-    padding: 12px 20px;
-    display: block;
+  .nav-item {
     width: 100%;
   }
 
+  .nav-link {
+    padding: 15px 20px;
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 12px;
+  }
+
   .nav-link.cta-button {
-    margin: 1rem 2rem;
-    width: auto;
-    display: inline-block;
+    margin: 1rem auto;
+    width: 80%;
+    display: block;
+    background: var(--primary-color);
+  }
+
+  .dashboard-link {
+    margin: 1rem auto;
+    width: 80%;
+    display: block;
   }
 
   .admin-button {
-    margin: 1rem 2rem;
-    width: auto;
-    display: inline-block;
-    padding: 10px 20px;
+    margin: 1rem auto;
+    width: 80%;
+    display: block;
+    padding: 15px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-container {
+    padding: 0 10px;
+    gap: 0.5rem;
   }
 
-  .nav-menu {
-    z-index: 999;
+  .nav-logo {
+    min-width: 180px;
+    max-width: 180px;
+  }
+
+  .logo-text h2 {
+    font-size: 1.1rem;
+  }
+
+  .logo-text span {
+    font-size: 0.6rem;
   }
 }

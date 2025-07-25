@@ -68,6 +68,113 @@
   margin-top: 1rem;
 }
 
+.submit-message p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Verification Form Styles */
+.verification-form {
+  text-align: center;
+}
+
+.verification-header {
+  margin-bottom: 2rem;
+}
+
+.verification-header h3 {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.verification-header p {
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.verification-input {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5rem;
+  padding: 1rem !important;
+  border: 3px solid var(--primary-color) !important;
+  background: #f8f9ff !important;
+}
+
+.verification-input:focus {
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2) !important;
+  transform: none !important;
+}
+
+.verification-actions {
+  margin-top: 1.5rem;
+}
+
+.verification-options {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn-secondary {
+  background: var(--text-secondary);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.btn-link {
+  background: none;
+  color: var(--primary-color);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: all 0.3s ease;
+}
+
+.btn-link:hover {
+  color: var(--text-primary);
+}
+
+/* Success Screen Styles */
+.success-screen {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.success-content h3 {
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.success-content p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.success-content button {
+  margin-top: 1.5rem;
+  padding: 1rem 2rem;
+}
+
 /* Mobile Styles */
 @media (max-width: 768px) {
   .join {
@@ -90,5 +197,27 @@
   .form-group input,
   .form-group textarea {
     padding: 14px 16px;
+  }
+
+  .verification-header h3 {
+    font-size: 1.5rem;
+  }
+
+  .verification-input {
+    font-size: 1.3rem;
+    letter-spacing: 0.3rem;
+  }
+
+  .verification-options {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .success-content h3 {
+    font-size: 1.6rem;
+  }
+
+  .success-content p {
+    font-size: 1rem;
   }
 }

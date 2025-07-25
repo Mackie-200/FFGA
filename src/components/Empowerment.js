@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
-import './Join.css';
+import './Empowerment.css';
 
-const Join = () => {
+const Empowerment = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    country: '',
-    motivation: ''
+    age: '',
+    location: '',
+    problem: '',
+    motivation: '',
+    supportNeeded: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('');
@@ -33,9 +36,9 @@ const Join = () => {
       // Send verification code to user's email
       await axios.post('https://formspree.io/f/YOUR_FORM_ID', {
         to: email,
-        subject: 'FFGA Ambassador Application - Verification Code',
-        message: `Your verification code is: ${code}. Please enter this code to complete your ambassador application.`,
-        _subject: 'FFGA Verification Code'
+        subject: 'FFGA Empowerment Request - Verification Code',
+        message: `Your verification code is: ${code}. Please enter this code to complete your empowerment support request.`,
+        _subject: 'FFGA Empowerment Verification Code'
       });
       return true;
     } catch (error) {
@@ -64,7 +67,7 @@ const Join = () => {
         setSubmitStatus('error');
       }
     } catch (error) {
-      console.error('Error in application process:', error);
+      console.error('Error in empowerment request process:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -77,13 +80,16 @@ const Join = () => {
 
     if (enteredCode === generatedCode) {
       try {
-        // Send the actual application data
+        // Send the actual empowerment request data
         await axios.post('https://formspree.io/f/YOUR_FORM_ID', {
           name: formData.name,
           email: formData.email,
-          country: formData.country,
+          age: formData.age,
+          location: formData.location,
+          problem: formData.problem,
           motivation: formData.motivation,
-          _subject: 'New Ambassador Application - VERIFIED',
+          supportNeeded: formData.supportNeeded,
+          _subject: 'New Empowerment Support Request - VERIFIED',
           verified: true
         });
 
@@ -94,13 +100,16 @@ const Join = () => {
         setFormData({
           name: '',
           email: '',
-          country: '',
-          motivation: ''
+          age: '',
+          location: '',
+          problem: '',
+          motivation: '',
+          supportNeeded: ''
         });
         setEnteredCode('');
         setGeneratedCode('');
       } catch (error) {
-        console.error('Error submitting verified application:', error);
+        console.error('Error submitting verified empowerment request:', error);
         setSubmitStatus('error');
       }
     } else {
@@ -132,20 +141,20 @@ const Join = () => {
   };
 
   return (
-    <section id="join" className="join">
+    <section id="empowerment" className="empowerment">
       <div className="container">
         <motion.div 
-          className="join-content"
+          className="empowerment-content"
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2>Join us in shaping the future!</h2>
-          <p>Become a Future Forward Generation Ambassador and be part of a dynamic community driving positive change.</p>
+          <h2>Seeking Empowerment & Support?</h2>
+          <p>We're here to help you overcome challenges and unlock your potential. Share your story with us.</p>
           
           <motion.div 
-            className="join-form"
+            className="empowerment-form"
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -153,46 +162,85 @@ const Join = () => {
           >
             {verificationStep === 'form' && (
               <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Your Full Name"
-                    required
-                  />
+                <div className="form-row">
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Your Full Name"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="Your Email Address"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <input
+                      type="number"
+                      name="age"
+                      value={formData.age}
+                      onChange={handleChange}
+                      placeholder="Your Age"
+                      min="1"
+                      max="100"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      name="location"
+                      value={formData.location}
+                      onChange={handleChange}
+                      placeholder="Your Location (City, Country)"
+                      required
+                    />
+                  </div>
                 </div>
                 
                 <div className="form-group">
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
+                  <textarea
+                    name="problem"
+                    value={formData.problem}
                     onChange={handleChange}
-                    placeholder="Your Email Address"
+                    placeholder="What challenges or problems are you facing? Please describe your situation..."
+                    rows="4"
                     required
                   />
                 </div>
-                
-                <div className="form-group">
-                  <input
-                    type="text"
-                    name="country"
-                    value={formData.country}
-                    onChange={handleChange}
-                    placeholder="Your Country"
-                    required
-                  />
-                </div>
-                
+
                 <div className="form-group">
                   <textarea
                     name="motivation"
                     value={formData.motivation}
                     onChange={handleChange}
-                    placeholder="Tell us why you want to become an ambassador..."
-                    rows="4"
+                    placeholder="Why do you want to join FFGA? What are your goals and aspirations?"
+                    rows="3"
+                    required
+                  />
+                </div>
+
+                <div className="form-group">
+                  <textarea
+                    name="supportNeeded"
+                    value={formData.supportNeeded}
+                    onChange={handleChange}
+                    placeholder="What kind of support or empowerment do you need from us? (e.g., mentorship, resources, training, etc.)"
+                    rows="3"
                     required
                   />
                 </div>
@@ -202,7 +250,7 @@ const Join = () => {
                   className="btn btn-primary btn-full"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? 'Sending Verification Code...' : 'Apply to Become an Ambassador'}
+                  {isSubmitting ? 'Sending Verification Code...' : 'Request Support & Empowerment'}
                 </button>
 
                 {submitStatus === 'code-sent' && (
@@ -224,7 +272,7 @@ const Join = () => {
                 <div className="verification-header">
                   <h3>📧 Email Verification</h3>
                   <p>We've sent a 6-digit verification code to <strong>{formData.email}</strong></p>
-                  <p>Please enter the code to complete your application:</p>
+                  <p>Please enter the code to complete your empowerment request:</p>
                 </div>
 
                 <div className="form-group">
@@ -246,7 +294,7 @@ const Join = () => {
                     className="btn btn-primary btn-full"
                     disabled={isSubmitting || enteredCode.length !== 6}
                   >
-                    {isSubmitting ? 'Verifying...' : 'Verify & Complete Application'}
+                    {isSubmitting ? 'Verifying...' : 'Verify & Complete Request'}
                   </button>
 
                   <div className="verification-options">
@@ -282,7 +330,7 @@ const Join = () => {
 
                 {submitStatus === 'error' && (
                   <div className="submit-message error">
-                    <p>❌ Sorry, there was an error processing your application. Please try again.</p>
+                    <p>❌ Sorry, there was an error processing your request. Please try again.</p>
                   </div>
                 )}
               </form>
@@ -291,9 +339,9 @@ const Join = () => {
             {verificationStep === 'success' && (
               <div className="success-screen">
                 <div className="success-content">
-                  <h3>🎉 Application Submitted Successfully!</h3>
-                  <p>Thank you, <strong>{formData.name}</strong>! Your ambassador application has been verified and submitted.</p>
-                  <p>We've received your details and will get back to you soon.</p>
+                  <h3>🎉 Empowerment Request Submitted Successfully!</h3>
+                  <p>Thank you, <strong>{formData.name}</strong>! Your empowerment support request has been verified and submitted.</p>
+                  <p>Our team will review your request and contact you soon to discuss how we can help empower you.</p>
                   <button 
                     className="btn btn-primary"
                     onClick={() => {
@@ -301,11 +349,39 @@ const Join = () => {
                       setSubmitStatus('');
                     }}
                   >
-                    Submit Another Application
+                    Submit Another Request
                   </button>
                 </div>
               </div>
             )}
+          </motion.div>
+
+          <motion.div 
+            className="empowerment-info"
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <h3>How We Can Help You</h3>
+            <div className="help-grid">
+              <div className="help-item">
+                <h4>🎓 Education & Training</h4>
+                <p>Access to educational resources, skill development programs, and training opportunities.</p>
+              </div>
+              <div className="help-item">
+                <h4>🤝 Mentorship</h4>
+                <p>Connect with experienced mentors who can guide you through your challenges and goals.</p>
+              </div>
+              <div className="help-item">
+                <h4>💼 Career Support</h4>
+                <p>Job placement assistance, career counseling, and professional development opportunities.</p>
+              </div>
+              <div className="help-item">
+                <h4>🌍 Community</h4>
+                <p>Join a supportive community of like-minded individuals working towards positive change.</p>
+              </div>
+            </div>
           </motion.div>
         </motion.div>
       </div>
@@ -313,4 +389,4 @@ const Join = () => {
   );
 };
 
-export default Join;
+export default Empowerment;
