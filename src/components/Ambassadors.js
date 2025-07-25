@@ -16,7 +16,7 @@ const Ambassadors = () => {
     },
     {
       id: 2,
-      name: "Chirumezani MCdonald",
+      name: "Chirumezani McDonald",
       title: "Innovation Ambassador",
       location: "Harare, Zimbabwe",
       bio: "AI researcher and community builder focused on bridging the gap between technology and social impact.",
