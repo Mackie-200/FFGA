@@ -16,11 +16,11 @@ const Ambassadors = () => {
     },
     {
       id: 2,
-      name: "Michael Chen",
+      name: "Chirumezani MCdonald",
       title: "Innovation Ambassador",
-      location: "Singapore",
+      location: "Harare, Zimbabwe",
       bio: "AI researcher and community builder focused on bridging the gap between technology and social impact.",
-      image: "/images/ambassador2.jpg", // You can replace with actual image path
+      image: "/images/mac.jpg", // Updated to use mac.jpg
       achievements: ["Published 15 research papers", "Built 5 AI for good projects", "Organized 20+ workshops"]
     },
     {

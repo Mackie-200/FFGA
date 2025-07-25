@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ onAdminClick }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -37,8 +37,11 @@ const Navbar = () => {
     >
       <div className="nav-container">
         <div className="nav-logo" onClick={() => scrollToSection('home')}>
-          <h2>FFGA</h2>
-          <span>Future Forward Generation Ambassadors</span>
+          <img src="/images/logo.jpg" alt="FFGA Logo" className="logo-img" />
+          <div className="logo-text">
+            <h2>FFGA</h2>
+            <span>Future Forward Generation Ambassadors</span>
+          </div>
         </div>
         
         <ul className={`nav-menu ${isOpen ? 'active' : ''}`}>
@@ -68,6 +71,11 @@ const Navbar = () => {
             </a>
           </li>
           <li className="nav-item">
+            <a href="#communication" className="nav-link" onClick={() => scrollToSection('communication')}>
+              Communication
+            </a>
+          </li>
+          <li className="nav-item">
             <a href="#contact" className="nav-link" onClick={() => scrollToSection('contact')}>
               Contact
             </a>
@@ -76,6 +84,11 @@ const Navbar = () => {
             <a href="#join" className="nav-link cta-button" onClick={() => scrollToSection('join')}>
               Join Us
             </a>
+          </li>
+          <li className="nav-item">
+            <button className="nav-link admin-button" onClick={onAdminClick}>
+              Admin
+            </button>
           </li>
         </ul>
         
